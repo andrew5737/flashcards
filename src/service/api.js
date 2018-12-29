@@ -17,8 +17,8 @@ class Card {
   }
 }
 
-const decks = [];
-const cards = [];
+let decks = [];
+let cards = [];
 
 export const createDeck = async name => {
   const deck = new Deck(nextDeckId++, name);
@@ -31,26 +31,31 @@ export const getDeck = async id => decks.find(deck => deck.id === id);
 export const getAllDecks = async () => decks;
 
 export const updateDeckName = async (id, name) => {
-  const deck = getDeck(id);
+  const deck = await getDeck(id);
   deck.name = name;
   return deck;
 };
 
 export const deleteDeck = async id => {
-  decks.filter(deck => deck.id !== id);
-  cards.filter(card => card.deckId !== id);
+  decks = decks.filter(deck => deck.id !== id);
+  cards = cards.filter(card => card.deckId !== id);
 };
 
-export const createCard = async (front, back, deck) =>
-  new Card(nextCardId++, front, back, deck);
+export const createCard = async (front, back, deck) => {
+  const card = new Card(nextCardId++, front, back, deck);
+  cards.push(card);
+  return card;
+};
 
 export const getCard = async id => cards.find(card => card.id === id);
+
+export const getAllCards = async () => cards;
 
 export const getCardsInDeck = async deckId =>
   cards.filter(card => card.deckId === deckId);
 
 export const updateCard = async (id, updates) => {
-  const card = getCard(id);
+  const card = await getCard(id);
 
   if (!card) return;
 
@@ -61,5 +66,5 @@ export const updateCard = async (id, updates) => {
 };
 
 export const deleteCard = async id => {
-  cards.filter(card => card.id !== id);
+  cards = cards.filter(card => card.id !== id);
 };
