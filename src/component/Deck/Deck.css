@@ -1,0 +1,15 @@
+.deck--name {
+  border: 1px solid black;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.deck--name:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
