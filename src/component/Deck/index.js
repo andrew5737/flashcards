@@ -6,7 +6,7 @@ export class Deck extends Component {
     this.props.onDeckSelected(this.props.id);
   }
 
-  render() {
+  render = () => {
     return (
       <div className="deck" onClick={this.onDeckSelected}>
         <div className="deck--name">{this.props.name}</div>

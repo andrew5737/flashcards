@@ -7,15 +7,13 @@ export class Card extends Component {
     this.state = {
       flipped: false
     };
-
-    this.flip = this.flip.bind(this);
   }
 
-  flip() {
+  flip = () => {
     this.setState({ flipped: !this.state.flipped });
   }
 
-  render() {
+  render = () => {
     const { front, back } = this.props;
     const cardText = this.state.flipped ? back : front;
     return (
