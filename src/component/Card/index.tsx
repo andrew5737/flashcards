@@ -1,8 +1,17 @@
 import React, { Component } from "react";
-import "./Card.css";
+import "./Card.scss";
 
-export class Card extends Component {
-  constructor(props) {
+interface CardState {
+  flipped: boolean;
+}
+
+export interface CardProps {
+  front: string;
+  back: string;
+}
+
+export class Card extends Component<CardProps, CardState> {
+  constructor(props: CardProps) {
     super(props);
     this.state = {
       flipped: false
@@ -11,7 +20,7 @@ export class Card extends Component {
 
   flip = () => {
     this.setState({ flipped: !this.state.flipped });
-  }
+  };
 
   render = () => {
     const { front, back } = this.props;
@@ -22,5 +31,5 @@ export class Card extends Component {
         <button onClick={this.flip}>flip</button>
       </div>
     );
-  }
+  };
 }

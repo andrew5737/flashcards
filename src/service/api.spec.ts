@@ -1,4 +1,10 @@
-let api;
+import * as apiImport from "./api";
+// this is a stupid hack for TypeScript/jest.
+// Need to set `api` to `typeof import("./api")`, while making it mutable. `api` needs to be mutable
+// so that jest can reset the module before each test.
+// Note: cannot use `let api: typeof import(".api");` or jest will throw an arrow saying unexpected
+// token.
+let api = apiImport;
 
 beforeEach(async () => (api = await import("./api")));
 afterEach(() => jest.resetModules());
@@ -41,7 +47,7 @@ describe("api", () => {
       const deck = await api.createDeck("deckName");
       const updatedDeckName = "updatedDeckName";
       const updatedDeck = await api.updateDeckName(deck.id, updatedDeckName);
-      expect(updatedDeck.name).toBe(updatedDeckName);
+      expect(updatedDeck!.name).toBe(updatedDeckName);
     });
   });
 
@@ -120,7 +126,7 @@ describe("api", () => {
       const deck1 = await api.createDeck("deck1");
       const card = await api.createCard("front", "back", deck1.id);
 
-      const deck2 = await api.createDeck("deck1");
+      const deck2 = await api.createDeck("deck2");
       const newFront = "newFront";
       const newBack = "back";
       await api.updateCard(card.id, {
@@ -130,9 +136,9 @@ describe("api", () => {
       });
 
       const updatedCard = await api.getCard(card.id);
-      expect(updatedCard.front).toEqual(newFront);
-      expect(updatedCard.back).toEqual(newBack);
-      expect(updatedCard.deck).toEqual(deck2.id);
+      expect(updatedCard!.front).toEqual(newFront);
+      expect(updatedCard!.back).toEqual(newBack);
+      expect(updatedCard!.deck).toEqual(deck2.id);
     });
   });
 
@@ -143,7 +149,7 @@ describe("api", () => {
 
       await api.deleteCard(card.id);
 
-      const cards = await api.getAllCards(card.id);
+      const cards = await api.getAllCards();
       expect(cards.length).toEqual(0);
     });
   });
