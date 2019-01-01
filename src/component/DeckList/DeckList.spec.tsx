@@ -2,6 +2,7 @@ import React from "react";
 import { DeckList } from "./index";
 import { shallow } from "enzyme";
 import { DeckThumbnail } from "../DeckThumbnail";
+import { Deck } from "../../entities/Deck";
 
 describe("Deck", () => {
   it("renders without crashing", () => {
@@ -9,7 +10,11 @@ describe("Deck", () => {
   });
 
   it("renders a list of deck (provided by `props.decks`)", () => {
-    const decks = [{ name: "deck1" }, { name: "deck2" }, { name: "deck3" }];
+    const decks = [
+      new Deck(0, "deck0"),
+      new Deck(1, "deck1"),
+      new Deck(3, "deck3")
+    ];
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
@@ -34,7 +39,7 @@ describe("Deck", () => {
   });
 
   it("renders a list of deck (provided by `props.decks`)", () => {
-    const decks = [{ name: "deck1" }, { name: "deck2" }];
+    const decks = [new Deck(0, "deck0"), new Deck(1, "deck1")];
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
@@ -53,7 +58,7 @@ describe("Deck", () => {
   });
 
   it("ensure that each deck has a key corresponding to it's index", () => {
-    const decks = [{ name: "deck1" }, { name: "deck2" }];
+    const decks = [new Deck(0, "deck0"), new Deck(1, "deck1")];
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
@@ -72,7 +77,7 @@ describe("Deck", () => {
   });
 
   it("ensure that each deck receives it's name as a prop", () => {
-    const decks = [{ name: "deck1" }, { name: "deck2" }];
+    const decks = [new Deck(0, "deck0"), new Deck(1, "deck1")];
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);

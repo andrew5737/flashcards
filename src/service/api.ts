@@ -1,27 +1,8 @@
+import { Deck } from "../entities/Deck";
+import { Card } from "../entities/Card";
+
 let nextDeck = 0;
 let nextCardId = 0;
-
-class Deck {
-  public id: number;
-  public name: string;
-  constructor(id: number, name: string) {
-    this.id = id;
-    this.name = name;
-  }
-}
-
-class Card {
-  public id: number;
-  public front: string;
-  public back: string;
-  public deck: number;
-  constructor(id: number, front: string, back: string, deck: number) {
-    this.id = id;
-    this.front = front;
-    this.back = back;
-    this.deck = deck;
-  }
-}
 
 let decks: Deck[] = [];
 let cards: Card[] = [];

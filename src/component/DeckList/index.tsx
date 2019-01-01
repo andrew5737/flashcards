@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { DeckThumbnail } from "../DeckThumbnail";
+import { Deck } from "../../entities/Deck";
 import "./DeckList.scss";
 
 export interface DeckListProps {
-  decks: any[];
+  decks: Deck[];
 }
 
 export class DeckList extends Component<DeckListProps, {}> {
