@@ -14,8 +14,8 @@ export class DeckThumbnail extends Component<DeckThumbnailProps, {}> {
 
   render = () => {
     return (
-      <div className="deck" onClick={this.onDeckSelected}>
-        <div className="deck--name">{this.props.name}</div>
+      <div className="deck-thumbnail" onClick={this.onDeckSelected}>
+        <div className="deck-thumbnail--name">{this.props.name}</div>
       </div>
     );
   };
