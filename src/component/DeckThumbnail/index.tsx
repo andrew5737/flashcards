@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import "./Deck.scss";
+import "./DeckThumbnail.scss";
 
-export interface DeckProps {
+export interface DeckThumbnailProps {
   onDeckSelected?: (id: number) => void;
   id: number;
   name: string;
 }
 
-export class Deck extends Component<DeckProps, {}> {
+export class DeckThumbnail extends Component<DeckThumbnailProps, {}> {
   onDeckSelected = () => {
     if (this.props.onDeckSelected) this.props.onDeckSelected(this.props.id);
   };
