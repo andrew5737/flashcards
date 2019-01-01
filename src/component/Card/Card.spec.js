@@ -5,9 +5,7 @@ import { Card } from "./index";
 
 describe("<Card />", () => {
   it("renders without crashing", () => {
-    const div = document.createElement("div");
-    ReactDOM.render(<Card />, div);
-    ReactDOM.unmountComponentAtNode(div);
+    shallow(<Card />);
   });
 
   it("after mounting displays `props.card.front` to `.card--text`", () => {
