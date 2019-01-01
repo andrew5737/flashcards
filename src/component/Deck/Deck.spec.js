@@ -7,15 +7,15 @@ describe("<Deck />", () => {
     shallow(<Deck />);
   });
 
-  it("renders text `props.deckName` inside `.deck--name` (1)", () => {
-    const deckName = "deckName1";
-    const wrapper = shallow(<Deck deckName={deckName} />);
-    expect(wrapper.find(".deck--name").text()).toBe(deckName);
+  it("renders text `props.name` inside `.deck--name` (1)", () => {
+    const name = "name1";
+    const wrapper = shallow(<Deck name={name} />);
+    expect(wrapper.find(".deck--name").text()).toBe(name);
   });
 
-  it("renders text `props.deckName` inside `.deck--name` (2)", () => {
-    const deckName = "deckName2";
-    const wrapper = shallow(<Deck deckName={deckName} />);
-    expect(wrapper.find(".deck--name").text()).toBe(deckName);
+  it("renders text `props.name` inside `.deck--name` (2)", () => {
+    const name = "name2";
+    const wrapper = shallow(<Deck name={name} />);
+    expect(wrapper.find(".deck--name").text()).toBe(name);
   });
 });

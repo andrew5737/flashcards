@@ -3,6 +3,6 @@ import "./Deck.css";
 
 export class Deck extends Component {
   render() {
-    return <div className="deck--name">{this.props.deckName}</div>;
+    return <div className="deck--name">{this.props.name}</div>;
   }
 }
