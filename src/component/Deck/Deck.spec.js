@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Deck } from "./index";
 import { shallow } from "enzyme";
 
