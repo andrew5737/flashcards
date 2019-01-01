@@ -13,21 +13,18 @@ describe("Deck", () => {
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
-
     expect(
       wrapper
         .find(".deck-list")
         .childAt(0)
         .type()
     ).toEqual(DeckThumbnail);
-
     expect(
       wrapper
         .find(".deck-list")
         .childAt(1)
         .type()
     ).toEqual(DeckThumbnail);
-
     expect(
       wrapper
         .find(".deck-list")
@@ -41,14 +38,12 @@ describe("Deck", () => {
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
-
     expect(
       wrapper
         .find(".deck-list")
         .childAt(0)
         .type()
     ).toEqual(DeckThumbnail);
-
     expect(
       wrapper
         .find(".deck-list")
@@ -62,14 +57,12 @@ describe("Deck", () => {
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
-
     expect(
       wrapper
         .find(".deck-list")
         .childAt(0)
         .key()
     ).toEqual("0");
-
     expect(
       wrapper
         .find(".deck-list")
@@ -83,14 +76,12 @@ describe("Deck", () => {
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);
-
     expect(
       wrapper
         .find(".deck-list")
         .childAt(0)
         .prop("name")
     ).toEqual(decks[0].name);
-
     expect(
       wrapper
         .find(".deck-list")
