@@ -1,17 +1,17 @@
 import React, { Component } from "react";
-import "./Card.scss";
+import "./DeckCard.scss";
 
-interface CardState {
+interface DeckCardState {
   flipped: boolean;
 }
 
-export interface CardProps {
+export interface DeckCardProps {
   front: string;
   back: string;
 }
 
-export class Card extends Component<CardProps, CardState> {
-  constructor(props: CardProps) {
+export class DeckCard extends Component<DeckCardProps, DeckCardState> {
+  constructor(props: DeckCardProps) {
     super(props);
     this.state = {
       flipped: false

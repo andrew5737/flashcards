@@ -1,7 +1,7 @@
 import React from "react";
 import { DeckList } from "./index";
 import { shallow } from "enzyme";
-import { DeckThumbnail } from "../DeckThumbnail";
+import { DeckListThumbnail } from "../DeckListThumbnail";
 import { Deck } from "../../entities/Deck";
 
 describe("Deck", () => {
@@ -23,19 +23,19 @@ describe("Deck", () => {
         .find(".deck-list")
         .childAt(0)
         .type()
-    ).toEqual(DeckThumbnail);
+    ).toEqual(DeckListThumbnail);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(1)
         .type()
-    ).toEqual(DeckThumbnail);
+    ).toEqual(DeckListThumbnail);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(2)
         .type()
-    ).toEqual(DeckThumbnail);
+    ).toEqual(DeckListThumbnail);
   });
 
   it("renders a list of deck (provided by `props.decks`)", () => {
@@ -48,13 +48,13 @@ describe("Deck", () => {
         .find(".deck-list")
         .childAt(0)
         .type()
-    ).toEqual(DeckThumbnail);
+    ).toEqual(DeckListThumbnail);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(1)
         .type()
-    ).toEqual(DeckThumbnail);
+    ).toEqual(DeckListThumbnail);
   });
 
   it("ensure that each deck has a key corresponding to it's index", () => {

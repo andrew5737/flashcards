@@ -1,28 +1,32 @@
 import React from "react";
-import { DeckThumbnail } from "./index";
+import { DeckListThumbnail } from "./index";
 import { shallow } from "enzyme";
 
 describe("<Deck />", () => {
   it("renders without crashing", () => {
-    shallow(<DeckThumbnail id={0} name={""} />);
+    shallow(<DeckListThumbnail id={0} name={""} />);
   });
 
   it("renders text `props.name` inside `.deck-thumbnail--name` (1)", () => {
     const name = "name1";
-    const wrapper = shallow(<DeckThumbnail id={0} name={name} />);
+    const wrapper = shallow(<DeckListThumbnail id={0} name={name} />);
     expect(wrapper.find(".deck-thumbnail--name").text()).toBe(name);
   });
 
   it("renders text `props.name` inside `.deck-thumbnail--name` (2)", () => {
     const name = "name2";
-    const wrapper = shallow(<DeckThumbnail id={0} name={name} />);
+    const wrapper = shallow(<DeckListThumbnail id={0} name={name} />);
     expect(wrapper.find(".deck-thumbnail--name").text()).toBe(name);
   });
 
   it("calls props.onDeckSelected when deck is clicked", () => {
     const onDeckSelectedMock = jest.fn();
     const wrapper = shallow(
-      <DeckThumbnail id={0} name={"name"} onDeckSelected={onDeckSelectedMock} />
+      <DeckListThumbnail
+        id={0}
+        name={"name"}
+        onDeckSelected={onDeckSelectedMock}
+      />
     );
     wrapper.find(".deck-thumbnail").simulate("click");
     expect(onDeckSelectedMock.mock.calls.length).toBe(1);
@@ -32,7 +36,7 @@ describe("<Deck />", () => {
     const onDeckSelectedMock = jest.fn();
     const deckId = 1214;
     const wrapper = shallow(
-      <DeckThumbnail
+      <DeckListThumbnail
         name={"name"}
         id={deckId}
         onDeckSelected={onDeckSelectedMock}

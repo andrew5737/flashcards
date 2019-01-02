@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { DeckThumbnail } from "../DeckThumbnail";
+import { DeckListThumbnail } from "../DeckListThumbnail";
 import { Deck } from "../../entities/Deck";
 import "./DeckList.scss";
 
@@ -14,7 +14,7 @@ export class DeckList extends Component<DeckListProps, {}> {
 
   render() {
     const decks = this.props.decks.map((deck, index) => (
-      <DeckThumbnail key={index} id={index} name={deck.name} />
+      <DeckListThumbnail key={index} id={index} name={deck.name} />
     ));
     return <div className="deck-list">{decks}</div>;
   }
