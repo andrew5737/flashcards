@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "../../entities/Card";
 import { DeckCard } from "../DeckCard";
+import "./Deck.scss";
 
 export interface DeckProps {
   id: number;
@@ -15,7 +16,7 @@ export class Deck extends Component<DeckProps, {}> {
     ));
     return (
       <div className="deck">
-        <div className="deck--name">{this.props.name}</div>
+        <h1 className="deck--name">{this.props.name}</h1>
         <div className="deck--cards">{cards}</div>
       </div>
     );
