@@ -21,23 +21,23 @@ describe("<DeckCard />", () => {
     expect(wrapper.find(".card--text").text()).toBe(back);
   });
 
-  it("colors .card background green when not flipped", () => {
+  it("sets .card backgroundColor to DeckCard.backgroundColors.front when not flipped", () => {
     const wrapper = shallow(<DeckCard front={"front"} back={"back"} />);
     wrapper.setState({ flipped: false });
 
     expect(wrapper.find(".card").prop("style")).toHaveProperty(
       "backgroundColor",
-      "#d6f6f6"
+      DeckCard.backgroundColors.front
     );
   });
 
-  it("colors .card background blue when flipped", () => {
+  it("sets .card backgroundColor to DeckCard.backgroundColors.back when flipped", () => {
     const wrapper = shallow(<DeckCard front={"front"} back={"back"} />);
     wrapper.setState({ flipped: true });
 
     expect(wrapper.find(".card").prop("style")).toHaveProperty(
       "backgroundColor",
-      "#d6f6d6"
+      DeckCard.backgroundColors.back
     );
   });
 });

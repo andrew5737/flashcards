@@ -11,6 +11,11 @@ export interface DeckCardProps {
 }
 
 export class DeckCard extends Component<DeckCardProps, DeckCardState> {
+  static readonly backgroundColors = {
+    front: "#d6d6f6",
+    back: "#d6f6f6"
+  };
+
   constructor(props: DeckCardProps) {
     super(props);
     this.state = {
@@ -25,7 +30,9 @@ export class DeckCard extends Component<DeckCardProps, DeckCardState> {
   render = () => {
     const { front, back } = this.props;
     const cardText = this.state.flipped ? back : front;
-    const backgroundColor = this.state.flipped ? "#d6f6d6" : "#d6f6f6";
+    const backgroundColor = this.state.flipped
+      ? DeckCard.backgroundColors.back
+      : DeckCard.backgroundColors.front;
     return (
       <div className="card" style={{ backgroundColor }}>
         <div className="card--text">{cardText}</div>
