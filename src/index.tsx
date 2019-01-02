@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Card } from "./component/Card";
+import { DeckCard } from "./component/DeckCard";
 import * as serviceWorker from "./serviceworker/serviceWorker";
 import "./global.css";
 
 ReactDOM.render(
-  <Card front="front" back="back" />,
+  <DeckCard front="front" back="back" />,
   document.getElementById("root")
 );
 
