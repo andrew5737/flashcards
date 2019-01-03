@@ -7,6 +7,18 @@ let nextCardId = 0;
 let decks: Deck[] = [];
 let cards: Card[] = [];
 
+export const initialize = async () => {
+  const deckCount = 12;
+  const cardCount = 20;
+
+  for (let i = 0; i < deckCount; i++) {
+    const deck = await createDeck("Deck" + (nextDeck + 1));
+    for (let i = 0; i < cardCount; i++) {
+      await createCard("front" + i, "back" + 1, deck.id);
+    }
+  }
+};
+
 export const createDeck = async (name: string) => {
   const deck = new Deck(nextDeck++, name);
   decks.push(deck);
