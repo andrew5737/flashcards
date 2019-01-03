@@ -1,4 +1,4 @@
-import { INITIALIZE_API } from "../actions";
+import { INITIALIZE_API_SUCCESS } from "../actions";
 
 const defaultState = {
   decks: [],
@@ -7,7 +7,7 @@ const defaultState = {
 
 const decks = (state = defaultState, action: any) => {
   switch (action.type) {
-    case INITIALIZE_API:
+    case INITIALIZE_API_SUCCESS:
       return {
         decks: action.decks,
         cards: action.cards
