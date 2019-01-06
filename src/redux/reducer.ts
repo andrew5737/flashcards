@@ -1,19 +1,13 @@
-import { ActionTypeInitialize, initializeApiSuccess } from "./actions";
 import { getType } from "typesafe-actions";
-import { Card } from "../entities/Card";
-import { Deck } from "../entities/Deck";
-
-interface ApplicationState {
-  decks: Deck[];
-  cards: Card[];
-}
+import { initializeApiSuccess } from "./actions";
+import { ApplicationState, ActionTypes } from "./types";
 
 const defaultState: ApplicationState = {
   decks: [],
   cards: []
 };
 
-const decks = (state = defaultState, action: ActionTypeInitialize) => {
+const decks = (state = defaultState, action: ActionTypes) => {
   switch (action.type) {
     case getType(initializeApiSuccess):
       return {

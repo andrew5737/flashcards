@@ -1,12 +1,6 @@
-import { createAction, ActionType } from "typesafe-actions";
+import { createAction } from "typesafe-actions";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
-
-export type ActionTypeInitialize = ActionType<
-  | typeof initializeApiSuccess
-  | typeof initializeApiPending
-  | typeof initializeApiError
->;
 
 export const initializeApiPending = createAction("INITIALIZE_API_PENDING");
 export const initializeApiSuccess = createAction(
