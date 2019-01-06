@@ -15,17 +15,3 @@ export const initializeApiSuccess = createAction(
   resolve => (decks: Deck[], cards: Card[]) => resolve({ decks, cards })
 );
 export const initializeApiError = createAction("INITIALIZE_API_ERROR");
-
-import { dispatch } from "../stores";
-export const initializeApi = async () => {
-  dispatch(initializeApiPending());
-  try {
-    await initialize();
-    const decks = await getAllDecks();
-    const cards = await getAllCards();
-    console.log(decks, cards);
-    dispatch(initializeApiSuccess(decks, cards));
-  } catch (e) {
-    dispatch(initializeApiError());
-  }
-};

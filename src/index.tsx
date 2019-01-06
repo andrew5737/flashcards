@@ -1,11 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import store from "./stores";
+import store from "./redux/store";
 import DeckListContainer from "./containers/DeckListContainer";
 import * as serviceWorker from "./serviceworker/serviceWorker";
 import "./global.css";
-import { initializeApi } from "./actions";
 
 (async () => {
   render(
