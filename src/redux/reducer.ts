@@ -1,13 +1,17 @@
 import { getType } from "typesafe-actions";
 import { initializeApiSuccess } from "./actions";
 import { ApplicationState, ActionTypes } from "./types";
+import { Reducer } from "redux";
 
 const defaultState: ApplicationState = {
   decks: [],
   cards: []
 };
 
-const decks = (state = defaultState, action: ActionTypes) => {
+const reducer: Reducer<ApplicationState, ActionTypes> = (
+  state = defaultState,
+  action
+) => {
   switch (action.type) {
     case getType(initializeApiSuccess):
       return {
