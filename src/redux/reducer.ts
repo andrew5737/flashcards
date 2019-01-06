@@ -1,5 +1,5 @@
 import { ActionTypeInitialize, initializeApiSuccess } from "./actions";
-import { ActionType, getType } from "typesafe-actions";
+import { getType } from "typesafe-actions";
 import { Card } from "../entities/Card";
 import { Deck } from "../entities/Deck";
 
