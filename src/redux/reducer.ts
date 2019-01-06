@@ -23,4 +23,4 @@ const reducer: Reducer<ApplicationState, ActionTypes> = (
   }
 };
 
-export default decks;
+export default reducer;
