@@ -1,5 +1,4 @@
 import { createAction, ActionType } from "typesafe-actions";
-import { initialize, getAllDecks, getAllCards } from "../services/api";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
 
