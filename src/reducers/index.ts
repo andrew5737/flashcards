@@ -1,4 +1,4 @@
-import { ActionTypeInitialize, requestToGetCoinsSuccess } from "../actions";
+import { ActionTypeInitialize, initializeApiSuccess } from "../actions";
 import { ActionType, getType } from "typesafe-actions";
 import { Card } from "../entities/Card";
 import { Deck } from "../entities/Deck";
@@ -18,7 +18,7 @@ const decks = (
   action: ActionTypeInitialize
 ) => {
   switch (action.type) {
-    case getType(requestToGetCoinsSuccess):
+    case getType(initializeApiSuccess):
       return {
         decks: action.payload.decks,
         cards: action.payload.cards
