@@ -8,15 +8,12 @@ interface ApplicationState {
   cards: Card[];
 }
 
-const defaultState = {
+const defaultState: ApplicationState = {
   decks: [],
   cards: []
 };
 
-const decks = (
-  state: ApplicationState = defaultState,
-  action: ActionTypeInitialize
-) => {
+const decks = (state = defaultState, action: ActionTypeInitialize) => {
   switch (action.type) {
     case getType(initializeApiSuccess):
       return {
