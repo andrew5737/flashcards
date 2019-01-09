@@ -4,8 +4,9 @@ import * as store from "./store";
 jest.mock("./store");
 jest.mock("../services/api");
 
-afterEach(() => jest.clearAllMocks());
 const dispatchListener = jest.spyOn(store, "dispatch");
+
+afterEach(() => jest.clearAllMocks());
 
 describe("initializeApi", () => {
   it("dispatch is called 2 times", async () => {
