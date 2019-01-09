@@ -1,13 +1,9 @@
-import * as apiImport from "./api";
-// this is a stupid hack for TypeScript/jest.
-// Need to set `api` to `typeof import("./api")`, while making it mutable. `api` needs to be mutable
-// so that jest can reset the module before each test.
-// Note: cannot use `let api: typeof import(".api");` or jest will throw an arrow saying unexpected
-// token.
-let api = apiImport;
+let api = require("./api");
 
-beforeEach(async () => (api = await import("./api")));
-afterEach(() => jest.resetModules());
+afterEach(() => {
+  jest.resetModules();
+  api = require("./api");
+});
 
 describe("api", () => {
   describe("createDeck", () => {
@@ -154,3 +150,7 @@ describe("api", () => {
     });
   });
 });
+
+// Use an empty export to please Babel's single file emit.
+// https://github.com/Microsoft/TypeScript/issues/15230
+export {};
