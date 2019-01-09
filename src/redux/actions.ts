@@ -1,10 +1,10 @@
-import { createAction } from "typesafe-actions";
+import { createAsyncAction } from "typesafe-actions";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
 
-export const initializeApiPending = createAction("INITIALIZE_API_PENDING");
-export const initializeApiSuccess = createAction(
+// interface success
+export const initializeApiAction = createAsyncAction(
+  "INITIALIZE_API_PENDING",
   "INITIALIZE_API_SUCCESS",
-  resolve => (decks: Deck[], cards: Card[]) => resolve({ decks, cards })
-);
-export const initializeApiError = createAction("INITIALIZE_API_ERROR");
+  "INITIALIZE_API_ERROR"
+)<void, { decks: Deck[]; cards: Card[] }, Error>();

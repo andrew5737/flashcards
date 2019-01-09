@@ -1,5 +1,5 @@
 import { getType } from "typesafe-actions";
-import { initializeApiSuccess } from "./actions";
+import { initializeApiAction } from "./actions";
 import { ApplicationState, ActionTypes } from "./types";
 import { Reducer } from "redux";
 
@@ -13,7 +13,7 @@ const reducer: Reducer<ApplicationState, ActionTypes> = (
   action
 ) => {
   switch (action.type) {
-    case getType(initializeApiSuccess):
+    case getType(initializeApiAction.success):
       return {
         decks: action.payload.decks,
         cards: action.payload.cards

@@ -1,19 +1,15 @@
 import { initialize, getAllDecks, getAllCards } from "../services/api";
 import { dispatch } from "./store";
-import {
-  initializeApiPending,
-  initializeApiSuccess,
-  initializeApiError
-} from "./actions";
+import { initializeApiAction } from "./actions";
 
 export const initializeApi = async () => {
-  dispatch(initializeApiPending());
+  dispatch(initializeApiAction.request());
   try {
     await initialize();
     const decks = await getAllDecks();
     const cards = await getAllCards();
-    dispatch(initializeApiSuccess(decks, cards));
+    dispatch(initializeApiAction.success({ decks, cards }));
   } catch (e) {
-    dispatch(initializeApiError());
+    dispatch(initializeApiAction.failure(e));
   }
 };
