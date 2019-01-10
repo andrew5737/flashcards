@@ -14,7 +14,7 @@ describe("reducer", () => {
         initializeApiAction.success({ decks, cards })
       );
 
-      expect(state).toEqual({ decks, cards });
+      expect(state).toEqual({ ...defaultState, decks, cards });
     });
   });
 });
