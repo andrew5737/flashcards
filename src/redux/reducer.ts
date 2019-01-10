@@ -3,7 +3,7 @@ import { initializeApiAction } from "./actions";
 import { ApplicationState, ActionTypes } from "./types";
 import { Reducer } from "redux";
 
-const defaultState: ApplicationState = {
+export const defaultState: ApplicationState = {
   decks: [],
   cards: []
 };
