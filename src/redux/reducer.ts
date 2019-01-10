@@ -15,6 +15,7 @@ const reducer: Reducer<ApplicationState, ActionTypes> = (
   switch (action.type) {
     case getType(initializeApiAction.success):
       return {
+        ...state,
         decks: action.payload.decks,
         cards: action.payload.cards
       };
