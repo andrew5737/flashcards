@@ -6,6 +6,6 @@ import { Deck } from "../entities/Deck";
 export type ActionTypes = ActionType<typeof actions>;
 
 export interface ApplicationState {
-  decks: Deck[];
-  cards: Card[];
+  readonly decks: Deck[];
+  readonly cards: Card[];
 }
