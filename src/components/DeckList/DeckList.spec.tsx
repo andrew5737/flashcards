@@ -1,8 +1,8 @@
 import React from "react";
 import { DeckList } from "./index";
 import { shallow } from "enzyme";
-import { DeckListThumbnail } from "../DeckListThumbnail";
 import { Deck } from "../../entities/Deck";
+import DeckListThumbnailContainer from "../../containers/DeckListThumbnailContainer";
 
 describe("Deck", () => {
   it("renders without crashing", () => {
@@ -23,19 +23,19 @@ describe("Deck", () => {
         .find(".deck-list")
         .childAt(0)
         .type()
-    ).toEqual(DeckListThumbnail);
+    ).toEqual(DeckListThumbnailContainer);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(1)
         .type()
-    ).toEqual(DeckListThumbnail);
+    ).toEqual(DeckListThumbnailContainer);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(2)
         .type()
-    ).toEqual(DeckListThumbnail);
+    ).toEqual(DeckListThumbnailContainer);
   });
 
   it("renders a list of deck (provided by `props.decks`)", () => {
@@ -48,13 +48,13 @@ describe("Deck", () => {
         .find(".deck-list")
         .childAt(0)
         .type()
-    ).toEqual(DeckListThumbnail);
+    ).toEqual(DeckListThumbnailContainer);
     expect(
       wrapper
         .find(".deck-list")
         .childAt(1)
         .type()
-    ).toEqual(DeckListThumbnail);
+    ).toEqual(DeckListThumbnailContainer);
   });
 
   it("ensure that each deck has a key corresponding to it's index", () => {

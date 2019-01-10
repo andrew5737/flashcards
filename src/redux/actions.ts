@@ -1,4 +1,4 @@
-import { createAsyncAction } from "typesafe-actions";
+import { createAsyncAction, createAction } from "typesafe-actions";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
 
@@ -7,3 +7,8 @@ export const initializeApiAction = createAsyncAction(
   "INITIALIZE_API_SUCCESS",
   "INITIALIZE_API_ERROR"
 )<void, { decks: Deck[]; cards: Card[] }, Error>();
+
+export const selectDeckAction = createAction(
+  "SELECT_DECK",
+  resolve => (id: number) => resolve({ id })
+);

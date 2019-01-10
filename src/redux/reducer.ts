@@ -8,11 +8,13 @@ import { Deck } from "../entities/Deck";
 export type ActionTypes = ActionType<typeof actions>;
 
 export interface ApplicationState {
+  readonly selectedDeck: number;
   readonly decks: Deck[];
   readonly cards: Card[];
 }
 
 export const defaultState: ApplicationState = {
+  selectedDeck: -1,
   decks: [],
   cards: []
 };
@@ -27,6 +29,11 @@ const reducer: Reducer<ApplicationState, ActionTypes> = (
         ...state,
         decks: action.payload.decks,
         cards: action.payload.cards
+      };
+    case getType(actions.selectDeckAction):
+      return {
+        ...state,
+        selectedDeck: action.payload.id
       };
     default:
       return state;
