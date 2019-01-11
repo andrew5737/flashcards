@@ -7,8 +7,3 @@ export const initializeApiAction = createAsyncAction(
   "INITIALIZE_API_SUCCESS",
   "INITIALIZE_API_ERROR"
 )<void, { decks: Deck[]; cards: Card[] }, Error>();
-
-export const selectDeckAction = createAction(
-  "SELECT_DECK",
-  resolve => (id: number) => resolve({ id })
-);

@@ -30,11 +30,6 @@ const reducer: Reducer<ApplicationState, ActionTypes> = (
         decks: action.payload.decks,
         cards: action.payload.cards
       };
-    case getType(actions.selectDeckAction):
-      return {
-        ...state,
-        selectedDeck: action.payload.id
-      };
     default:
       return state;
   }

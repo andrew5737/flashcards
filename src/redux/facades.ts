@@ -1,6 +1,6 @@
 import { initialize, getAllDecks, getAllCards } from "../services/api";
 import { dispatch } from "./store";
-import { initializeApiAction, selectDeckAction } from "./actions";
+import { initializeApiAction } from "./actions";
 
 export const initializeApi = async () => {
   dispatch(initializeApiAction.request());
@@ -12,8 +12,4 @@ export const initializeApi = async () => {
   } catch (e) {
     dispatch(initializeApiAction.failure(e));
   }
-};
-
-export const selectDeck = (id: number) => {
-  dispatch(selectDeckAction(id));
 };
