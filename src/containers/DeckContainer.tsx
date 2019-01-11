@@ -1,17 +1,26 @@
 import React, { Component } from "react";
-import { DeckProps, Deck } from "../components/Deck";
+import { Deck as DeckComponent } from "../components/Deck";
 import { connect } from "react-redux";
 import { ApplicationState } from "../redux/reducer";
 import { RouteComponentProps } from "react-router";
+import { Deck } from "../entities/Deck";
+import { Page404 } from "../components/Page404";
+import { Card } from "../entities/Card";
 
-interface DeckContainerProps
-  extends DeckProps,
-    RouteComponentProps<{ id: string }> {}
+interface DeckContainerProps extends RouteComponentProps<{ id: string }> {
+  deck?: Deck;
+  cards: Card[];
+}
 
 class DeckContainer extends Component<DeckContainerProps, {}> {
   render = () => {
-    const { id, name, cards } = this.props;
-    return <Deck id={id} name={name} cards={cards} />;
+    const { deck, cards } = this.props;
+    if (deck) {
+      const { id, name } = deck;
+      return <DeckComponent id={id} name={name} cards={cards} />;
+    } else {
+      return <Page404 />;
+    }
   };
 }
 
@@ -20,10 +29,10 @@ const mapStateToProps = (
   ownProps: DeckContainerProps
 ) => {
   const id = parseInt(ownProps.match.params.id);
-  const deck = state.decks.filter(deck => deck.id === id);
-  const name = deck.length > 0 ? deck[0].name : "No Deck Found";
-  const cards = state.cards.filter(card => card.deck === id);
-  return { id, name, cards };
+  const deckMatch = state.decks.filter(deck => deck.id === id);
+  const deck = deckMatch.length > 0 ? deckMatch[0] : undefined;
+  const cards = deck ? state.cards.filter(card => card.deck === id) : [];
+  return { deck, cards };
 };
 
 export default connect(mapStateToProps)(DeckContainer);
