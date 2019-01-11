@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { DeckList } from "../components/DeckList";
 import { Deck } from "../entities/Deck";
-import { initializeApi } from "../redux/facades";
 
 export interface DeckListContainerProps {
   decks: Deck[];
