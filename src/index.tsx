@@ -8,6 +8,7 @@ import * as serviceWorker from "./serviceworker/serviceWorker";
 import DeckContainer from "./containers/DeckContainer";
 import { initializeApi } from "./redux/facades";
 import "./global.css";
+import { Page404 } from "./components/Page404";
 
 (async () => {
   await initializeApi();
@@ -17,6 +18,7 @@ import "./global.css";
         <Switch>
           <Route exact path="/" component={DeckListContainer} />
           <Route path="/deck/:id" component={DeckContainer} />
+          <Route component={Page404} />
         </Switch>
       </Provider>
     </BrowserRouter>,
