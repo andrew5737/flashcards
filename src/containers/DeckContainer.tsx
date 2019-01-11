@@ -29,8 +29,7 @@ const mapStateToProps = (
   ownProps: DeckContainerProps
 ) => {
   const id = parseInt(ownProps.match.params.id);
-  const deckMatch = state.decks.filter(deck => deck.id === id);
-  const deck = deckMatch.length > 0 ? deckMatch[0] : undefined;
+  const deck = state.decks.find(deck => deck.id === id);
   const cards = deck ? state.cards.filter(card => card.deck === id) : [];
   return { deck, cards };
 };
