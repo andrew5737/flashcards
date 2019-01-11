@@ -1,16 +1,25 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import store from "./redux/store";
 import DeckListContainer from "./containers/DeckListContainer";
 import * as serviceWorker from "./serviceworker/serviceWorker";
+import DeckContainer from "./containers/DeckContainer";
+import { initializeApi } from "./redux/facades";
 import "./global.css";
 
 (async () => {
+  await initializeApi();
   render(
-    <Provider store={store}>
-      <DeckListContainer />
-    </Provider>,
+    <BrowserRouter>
+      <Provider store={store}>
+        <Switch>
+          <Route exact path="/" component={DeckListContainer} />
+          <Route path="/deck/:id" component={DeckContainer} />
+        </Switch>
+      </Provider>
+    </BrowserRouter>,
     document.getElementById("root")
   );
 

@@ -3,18 +3,29 @@ import {
   DeckListThumbnail,
   DeckListThumbnailProps
 } from "../components/DeckListThumbnail";
-import { selectDeck } from "../redux/facades";
+import { History } from "history";
+import { withRouter, RouteComponentProps } from "react-router";
 
-class DeckListThumbnailContainer extends Component<DeckListThumbnailProps, {}> {
+export interface DeckListThumbnailContainerProps
+  extends DeckListThumbnailProps,
+    RouteComponentProps {
+  history: History;
+}
+
+class DeckListThumbnailContainer extends Component<
+  DeckListThumbnailContainerProps,
+  {}
+> {
   render = () => {
+    const { id, name, history } = this.props;
     return (
       <DeckListThumbnail
-        id={this.props.id}
-        name={this.props.name}
-        select={selectDeck}
+        id={id}
+        name={name}
+        select={() => history.push(`/deck/${id}`)}
       />
     );
   };
 }
 
-export default DeckListThumbnailContainer;
+export default withRouter(DeckListThumbnailContainer);

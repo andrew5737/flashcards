@@ -5,17 +5,12 @@ import { Deck } from "../entities/Deck";
 import { initializeApi } from "../redux/facades";
 
 export interface DeckListContainerProps {
-  decks?: Deck[];
+  decks: Deck[];
 }
 
 class DeckListContainer extends Component<DeckListContainerProps, {}> {
-  static readonly defaultProps = {
-    decks: []
-  };
-
   constructor(props: DeckListContainerProps) {
     super(props);
-    initializeApi();
   }
 
   render = () => {
