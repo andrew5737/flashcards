@@ -9,10 +9,7 @@ interface CreateDeckState {
   deckName: string;
 }
 
-export default class CreateDeck extends Component<
-  CreateDeckProps,
-  CreateDeckState
-> {
+export class CreateDeck extends Component<CreateDeckProps, CreateDeckState> {
   state = { deckName: "" };
 
   createDeck = () => this.props.createDeck(this.state.deckName);
