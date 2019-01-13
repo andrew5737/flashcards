@@ -3,7 +3,9 @@ import { ActionTypes } from "./reducer";
 
 export async function asyncFacadeBuilder<
   T1 extends ActionTypes,
+  // needs to be either EmptyAction or Payload Action
   T2 extends ActionTypes,
+  // needs to be Payload Action with Error type
   T3 extends ActionTypes,
   P
 >(
