@@ -6,8 +6,8 @@ export const initializeApi = async () =>
   asyncFacadeBuilder(initializeApiAction, async () => {
     await api.initialize();
     const [decks, cards] = await Promise.all([
-      await api.getAllDecks(),
-      await api.getAllCards()
+      api.getAllDecks(),
+      api.getAllCards()
     ]);
     return { decks, cards };
   });
