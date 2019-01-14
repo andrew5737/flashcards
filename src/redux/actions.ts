@@ -12,4 +12,4 @@ export const createDeckAction = createAsyncAction(
   "CREATE_DECK_PENDING",
   "CREATE_DECK_SUCCESS",
   "CREATE_DECK_ERROR"
-)<void, void, Error>();
+)<void, Deck, Error>();
