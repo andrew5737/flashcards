@@ -1,21 +1,29 @@
 import { dispatch } from "./store";
-import { ActionTypes } from "./reducer";
+import * as actions from "./actions";
+
+type actions = typeof actions[keyof typeof actions];
+type extractRequest<Type> = Type extends { request: infer X } ? X : () => void;
+type extractSuccess<Type> = Type extends { success: infer X } ? X : () => void;
+type extractFailure<Type> = Type extends { failure: infer X } ? X : () => void;
+type extractPayload<Type> = Type extends (args: any) => { payload: infer X }
+  ? X
+  : void;
 
 export async function asyncFacadeBuilder<
-  T1 extends ActionTypes,
-  // needs to be either EmptyAction or Payload Action
-  T2 extends ActionTypes,
-  // needs to be Payload Action with Error type
-  T3 extends ActionTypes,
-  P
+  A extends actions,
+  R extends extractRequest<A>,
+  S extends extractSuccess<A>,
+  F extends extractFailure<A>,
+  P extends extractPayload<S>
 >(
   action: {
-    request: () => T1;
-    success: (payload: P) => T2;
-    failure: (error: Error) => T3;
+    request: R;
+    success: S;
+    failure: F;
   },
   asyncFunc: () => Promise<P>
 ): Promise<void> {
+  let p: P;
   dispatch(action.request());
   try {
     const resp = await asyncFunc();
