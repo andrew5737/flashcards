@@ -23,7 +23,6 @@ export async function asyncFacadeBuilder<
   },
   asyncFunc: () => Promise<P>
 ): Promise<void> {
-  let p: P;
   dispatch(action.request());
   try {
     const resp = await asyncFunc();
