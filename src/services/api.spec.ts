@@ -27,11 +27,7 @@ describe("api", () => {
 
   describe("getAllDecks", () => {
     it("creates 3 decks and gets them all", async () => {
-      await Promise.all([
-        api.createDeck("1"),
-        api.createDeck("2"),
-        api.createDeck("3")
-      ]);
+      await Promise.all([api.createDeck("1"), api.createDeck("2"), api.createDeck("3")]);
 
       const decks = await api.getAllDecks();
       expect(decks.length).toEqual(3);

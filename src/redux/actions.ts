@@ -14,11 +14,11 @@ export const createDeck = createAsyncAction(
   "CREATE_DECK_ERROR"
 )<void, Deck, Error>();
 
-export const getDeck = createAsyncAction(
-  "GET_DECK_PENDING",
-  "GET_DECK_SUCCESS",
-  "GET_DECK_ERROR"
-)<void, Deck | undefined, Error>();
+export const getDeck = createAsyncAction("GET_DECK_PENDING", "GET_DECK_SUCCESS", "GET_DECK_ERROR")<
+  void,
+  Deck | undefined,
+  Error
+>();
 
 export const getAllDecks = createAsyncAction(
   "GET_ALL_DECKS_PENDING",
@@ -44,11 +44,11 @@ export const createCard = createAsyncAction(
   "CREATE_CARD_ERROR"
 )<void, Card, Error>();
 
-export const getCard = createAsyncAction(
-  "GET_CARD_PENDING",
-  "GET_CARD_SUCCESS",
-  "GET_CARD_ERROR"
-)<void, Card | undefined, Error>();
+export const getCard = createAsyncAction("GET_CARD_PENDING", "GET_CARD_SUCCESS", "GET_CARD_ERROR")<
+  void,
+  Card | undefined,
+  Error
+>();
 
 export const getAllCards = createAsyncAction(
   "GET_ALL_CARDS_PENDING",

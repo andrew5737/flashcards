@@ -5,10 +5,7 @@ import * as actions from "./actions";
 export const initializeApi = async () =>
   asyncFacadeBuilder(actions.initializeApi, async () => {
     await api.initialize();
-    const [decks, cards] = await Promise.all([
-      api.getAllDecks(),
-      api.getAllCards()
-    ]);
+    const [decks, cards] = await Promise.all([api.getAllDecks(), api.getAllCards()]);
     return { decks, cards };
   });
 
@@ -22,17 +19,13 @@ export const getAllDecks = async () =>
   asyncFacadeBuilder(actions.getAllDecks, () => api.getAllDecks());
 
 export const updateDeckName = async (id: number, name: string) =>
-  asyncFacadeBuilder(actions.updateDeckName, () =>
-    api.updateDeckName(id, name)
-  );
+  asyncFacadeBuilder(actions.updateDeckName, () => api.updateDeckName(id, name));
 
 export const deleteDeck = async (id: number) =>
   asyncFacadeBuilder(actions.deleteDeck, () => api.deleteDeck(id));
 
 export const createCard = async (front: string, back: string, deck: number) =>
-  asyncFacadeBuilder(actions.createCard, () =>
-    api.createCard(front, back, deck)
-  );
+  asyncFacadeBuilder(actions.createCard, () => api.createCard(front, back, deck));
 
 export const getCard = async (id: number) =>
   asyncFacadeBuilder(actions.getCard, () => api.getCard(id));

@@ -10,11 +10,7 @@ describe("Deck", () => {
   });
 
   it("renders a list of deck (provided by `props.decks`)", () => {
-    const decks = [
-      new Deck(0, "deck0"),
-      new Deck(1, "deck1"),
-      new Deck(3, "deck3")
-    ];
+    const decks = [new Deck(0, "deck0"), new Deck(1, "deck1"), new Deck(3, "deck3")];
     const wrapper = shallow(<DeckList decks={decks} />);
 
     expect(wrapper.find(".deck-list").children()).toHaveLength(decks.length);

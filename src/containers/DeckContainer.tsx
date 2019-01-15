@@ -30,10 +30,7 @@ class DeckContainer extends Component<DeckContainerProps, {}> {
   };
 }
 
-const mapStateToProps = (
-  state: ApplicationState,
-  ownProps: DeckContainerProps
-) => {
+const mapStateToProps = (state: ApplicationState, ownProps: DeckContainerProps) => {
   const id = parseInt(ownProps.match.params.id);
   const deck = state.decks.find(deck => deck.id === id);
   const cards = deck ? state.cards.filter(card => card.deck === id) : [];

@@ -27,8 +27,7 @@ describe("<Deck />", () => {
 
     const deckCards = wrapper.find(".deck--cards");
     expect(deckCards.children().length).toBe(cards.length);
-    for (let i = 0; i < cards.length; i++)
-      expect(deckCards.childAt(i).type()).toBe(DeckCard);
+    for (let i = 0; i < cards.length; i++) expect(deckCards.childAt(i).type()).toBe(DeckCard);
   });
 
   it("displays the correct Card details", () => {

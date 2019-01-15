@@ -21,9 +21,7 @@ describe("<Deck />", () => {
 
   it("calls props.select when deck is clicked", () => {
     const selectMock = jest.fn();
-    const wrapper = shallow(
-      <DeckListThumbnail id={0} name={"name"} select={selectMock} />
-    );
+    const wrapper = shallow(<DeckListThumbnail id={0} name={"name"} select={selectMock} />);
     wrapper.find(".deck-thumbnail").simulate("click");
     expect(selectMock.mock.calls.length).toBe(1);
   });
@@ -31,9 +29,7 @@ describe("<Deck />", () => {
   it("passes deck.id to props.select when deck is clicked", () => {
     const selectMock = jest.fn();
     const deckId = 1214;
-    const wrapper = shallow(
-      <DeckListThumbnail name={"name"} id={deckId} select={selectMock} />
-    );
+    const wrapper = shallow(<DeckListThumbnail name={"name"} id={deckId} select={selectMock} />);
     wrapper.find(".deck-thumbnail").simulate("click");
     expect(selectMock.mock.calls.length).toBe(1);
     expect(selectMock.mock.calls[0][0]).toBe(deckId);

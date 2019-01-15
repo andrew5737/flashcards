@@ -51,8 +51,7 @@ export const getCard = async (id: number) => cards.find(card => card.id === id);
 
 export const getAllCards = async () => cards;
 
-export const getCardsInDeck = async (deck: number) =>
-  cards.filter(card => card.deck === deck);
+export const getCardsInDeck = async (deck: number) => cards.filter(card => card.deck === deck);
 
 export type CardUpdates = { front?: string; back?: string; deck?: number };
 export const updateCard = async (id: number, updates: CardUpdates) => {

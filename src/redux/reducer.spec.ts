@@ -9,10 +9,7 @@ describe("reducer", () => {
       const decks = [new Deck(0, "deck0")];
       const cards = [new Card(0, "front", "back", 0)];
 
-      const state = reducer(
-        defaultState,
-        initializeApi.success({ decks, cards })
-      );
+      const state = reducer(defaultState, initializeApi.success({ decks, cards }));
 
       expect(state).toEqual({ ...defaultState, decks, cards });
     });
