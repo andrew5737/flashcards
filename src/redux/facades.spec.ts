@@ -2,7 +2,7 @@ import { initializeApi } from "./facades";
 import * as api from "../services/api";
 import * as store from "./store";
 import { getType } from "typesafe-actions";
-import { initializeApiAction } from "./actions";
+import * as actions from "./actions";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
 jest.mock("./store");
@@ -16,17 +16,17 @@ describe("initializeApi", () => {
   it("dispatch request action", async () => {
     await initializeApi();
     expect(dispatchListener.mock.calls[0][0].type).toBe(
-      getType(initializeApiAction.request)
+      getType(actions.initializeApi.request)
     );
   });
 
   it("dispatch request action followed by success action", async () => {
     await initializeApi();
     expect(dispatchListener.mock.calls[0][0].type).toBe(
-      getType(initializeApiAction.request)
+      getType(actions.initializeApi.request)
     );
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.success)
+      getType(actions.initializeApi.success)
     );
   });
 
@@ -35,7 +35,7 @@ describe("initializeApi", () => {
     jest.spyOn(api, "getAllDecks").mockResolvedValue(decks);
     await initializeApi();
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.success)
+      getType(actions.initializeApi.success)
     );
     expect(dispatchListener.mock.calls[1][0].payload.decks).toBe(decks);
   });
@@ -45,7 +45,7 @@ describe("initializeApi", () => {
     jest.spyOn(api, "getAllCards").mockResolvedValue(cards);
     await initializeApi();
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.success)
+      getType(actions.initializeApi.success)
     );
     expect(dispatchListener.mock.calls[1][0].payload.cards).toBe(cards);
   });
@@ -54,10 +54,10 @@ describe("initializeApi", () => {
     jest.spyOn(api, "getAllDecks").mockRejectedValue(null);
     await initializeApi();
     expect(dispatchListener.mock.calls[0][0].type).toBe(
-      getType(initializeApiAction.request)
+      getType(actions.initializeApi.request)
     );
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.failure)
+      getType(actions.initializeApi.failure)
     );
   });
 
@@ -65,10 +65,10 @@ describe("initializeApi", () => {
     jest.spyOn(api, "getAllCards").mockRejectedValue(null);
     await initializeApi();
     expect(dispatchListener.mock.calls[0][0].type).toBe(
-      getType(initializeApiAction.request)
+      getType(actions.initializeApi.request)
     );
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.failure)
+      getType(actions.initializeApi.failure)
     );
   });
 
@@ -77,7 +77,7 @@ describe("initializeApi", () => {
     jest.spyOn(api, "getAllCards").mockRejectedValue(err);
     await initializeApi();
     expect(dispatchListener.mock.calls[1][0].type).toBe(
-      getType(initializeApiAction.failure)
+      getType(actions.initializeApi.failure)
     );
     expect(dispatchListener.mock.calls[1][0].payload).toBe(err);
   });

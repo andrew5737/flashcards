@@ -54,8 +54,8 @@ export const getAllCards = async () => cards;
 export const getCardsInDeck = async (deck: number) =>
   cards.filter(card => card.deck === deck);
 
-type cardUpdates = { front?: string; back?: string; deck?: number };
-export const updateCard = async (id: number, updates: cardUpdates) => {
+export type CardUpdates = { front?: string; back?: string; deck?: number };
+export const updateCard = async (id: number, updates: CardUpdates) => {
   const card = await getCard(id);
 
   if (!card) return;
