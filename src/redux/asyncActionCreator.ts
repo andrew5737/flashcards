@@ -25,8 +25,6 @@ export interface CallableAsyncAction<
 > extends AsyncActionBuilder<T1, T2, T3, void, P, Error> {
   (...args: A): Promise<void>;
 }
-{
-}
 
 export function asyncActionCreator<
   T1 extends string,
