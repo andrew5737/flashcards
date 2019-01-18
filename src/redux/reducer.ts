@@ -19,7 +19,10 @@ export const defaultState: ApplicationState = {
   cards: []
 };
 
-const reducer: Reducer<ApplicationState, ActionTypes> = (state = defaultState, action) => {
+const reducer: Reducer<ApplicationState, ActionTypes> = (
+  state = defaultState,
+  action
+): ApplicationState => {
   switch (action.type) {
     case getType(actions.initializeApi.success):
       return {
