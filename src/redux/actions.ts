@@ -1,20 +1,19 @@
-import { createAsyncAction } from "typesafe-actions";
-import { Deck } from "../entities/Deck";
-import { Card } from "../entities/Card";
 import { asyncActionCreator } from "./asyncActionFacadeBuilder";
 import * as api from "../services/api";
 
-export const initializeApi = createAsyncAction(
+export const initializeApi = asyncActionCreator(
   "INITIALIZE_API_PENDING",
   "INITIALIZE_API_SUCCESS",
-  "INITIALIZE_API_ERROR"
-)<void, { decks: Deck[]; cards: Card[] }, Error>();
+  "INITIALIZE_API_ERROR",
+  api.initialize
+);
 
-export const createDeck = createAsyncAction(
+export const createDeck = asyncActionCreator(
   "CREATE_DECK_PENDING",
   "CREATE_DECK_SUCCESS",
-  "CREATE_DECK_ERROR"
-)<void, Deck, Error>();
+  "CREATE_DECK_ERROR",
+  api.createDeck
+);
 
 export const getDeck = asyncActionCreator(
   "GET_DECK_PENDING",
@@ -30,50 +29,58 @@ export const getAllDecks = asyncActionCreator(
   api.getAllDecks
 );
 
-export const updateDeckName = createAsyncAction(
+export const updateDeckName = asyncActionCreator(
   "UPDATE_DECK_NAME_PENDING",
   "UPDATE_DECK_NAME_SUCCESS",
-  "UPDATE_DECK_NAME_ERROR"
-)<void, Deck | undefined, Error>();
+  "UPDATE_DECK_NAME_ERROR",
+  api.updateDeckName
+);
 
-export const deleteDeck = createAsyncAction(
+export const deleteDeck = asyncActionCreator(
   "DELETE_DECK_PENDING",
   "DELETE_DECK_SUCCESS",
-  "DELETE_DECK_ERROR"
-)<void, void, Error>();
+  "DELETE_DECK_ERROR",
+  api.deleteDeck
+);
 
-export const createCard = createAsyncAction(
+export const createCard = asyncActionCreator(
   "CREATE_CARD_PENDING",
   "CREATE_CARD_SUCCESS",
-  "CREATE_CARD_ERROR"
-)<void, Card, Error>();
+  "CREATE_CARD_ERROR",
+  api.createCard
+);
 
-export const getCard = createAsyncAction("GET_CARD_PENDING", "GET_CARD_SUCCESS", "GET_CARD_ERROR")<
-  void,
-  Card | undefined,
-  Error
->();
+export const getCard = asyncActionCreator(
+  "GET_CARD_PENDING",
+  "GET_CARD_SUCCESS",
+  "GET_CARD_ERROR",
+  api.getCard
+);
 
-export const getAllCards = createAsyncAction(
+export const getAllCards = asyncActionCreator(
   "GET_ALL_CARDS_PENDING",
   "GET_ALL_CARDS_SUCCESS",
-  "GET_ALL_CARDS_ERROR"
-)<void, Card[], Error>();
+  "GET_ALL_CARDS_ERROR",
+  api.getAllCards
+);
 
-export const getCardsInDeck = createAsyncAction(
+export const getCardsInDeck = asyncActionCreator(
   "GET_CARDS_IN_DECK_PENDING",
   "GET_CARDS_IN_DECK_SUCCESS",
-  "GET_CARDS_IN_DECK_ERROR"
-)<void, Card[], Error>();
+  "GET_CARDS_IN_DECK_ERROR",
+  api.getCardsInDeck
+);
 
-export const updateCard = createAsyncAction(
+export const updateCard = asyncActionCreator(
   "UPDATE_CARD_PENDING",
   "UPDATE_CARD_SUCCESS",
-  "UPDATE_CARD_ERROR"
-)<void, void, Error>();
+  "UPDATE_CARD_ERROR",
+  api.updateCard
+);
 
-export const deleteCard = createAsyncAction(
+export const deleteCard = asyncActionCreator(
   "DELETE_CARD_PENDING",
   "DELETE_CARD_SUCCESS",
-  "DELETE_CARD_ERROR"
-)<void, void, Error>();
+  "DELETE_CARD_ERROR",
+  api.deleteCard
+);

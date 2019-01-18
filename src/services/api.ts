@@ -17,6 +17,9 @@ export const initialize = async () => {
       await createCard("front" + i, "back" + 1, deck.id);
     }
   }
+
+  const [decks, cards] = await Promise.all([getAllDecks(), getAllCards()]);
+  return { decks, cards };
 };
 
 export const createDeck = async (name: string) => {
