@@ -6,7 +6,7 @@ import store from "./redux/store";
 import DeckListContainer from "./containers/DeckListContainer";
 import * as serviceWorker from "./serviceworker/serviceWorker";
 import DeckContainer from "./containers/DeckContainer";
-import { initializeApi } from "./redux/facades";
+import { initializeApi } from "./redux/actions";
 import "./global.css";
 import { Page404 } from "./components/Page404";
 
