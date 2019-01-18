@@ -1,6 +1,8 @@
 import { createAsyncAction } from "typesafe-actions";
 import { Deck } from "../entities/Deck";
 import { Card } from "../entities/Card";
+import { asyncActionCreator } from "./asyncActionFacadeBuilder";
+import * as api from "../services/api";
 
 export const initializeApi = createAsyncAction(
   "INITIALIZE_API_PENDING",
@@ -14,17 +16,19 @@ export const createDeck = createAsyncAction(
   "CREATE_DECK_ERROR"
 )<void, Deck, Error>();
 
-export const getDeck = createAsyncAction("GET_DECK_PENDING", "GET_DECK_SUCCESS", "GET_DECK_ERROR")<
-  void,
-  Deck | undefined,
-  Error
->();
+export const getDeck = asyncActionCreator(
+  "GET_DECK_PENDING",
+  "GET_DECK_SUCCESS",
+  "GET_DECK_FAILURE",
+  api.getDeck
+);
 
-export const getAllDecks = createAsyncAction(
-  "GET_ALL_DECKS_PENDING",
-  "GET_ALL_DECKS_SUCCESS",
-  "GET_ALL_DECKS_ERROR"
-)<void, Deck[], Error>();
+export const getAllDecks = asyncActionCreator(
+  "GET_ALL_DECK_PENDING",
+  "GET_ALL_DECK_SUCCESS",
+  "GET_ALL_DECK_FAILURE",
+  api.getAllDecks
+);
 
 export const updateDeckName = createAsyncAction(
   "UPDATE_DECK_NAME_PENDING",
