@@ -1,4 +1,4 @@
-import { asyncActionCreator } from "./asyncActionFacadeBuilder";
+import { asyncActionCreator } from "./asyncActionCreator";
 import * as api from "../services/api";
 
 export const initializeApi = asyncActionCreator(
