@@ -16,28 +16,13 @@ async function asyncActionFacadeBuilder<P, A extends any[]>(
   }
 }
 
-export interface CallableAsyncAction<
-  T1 extends string,
-  T2 extends string,
-  T3 extends string,
-  P,
-  A extends any[]
-> extends AsyncActionBuilder<T1, T2, T3, void, P, Error> {
-  (...args: A): Promise<void>;
-}
-
 export function asyncActionCreator<
   T1 extends string,
   T2 extends string,
   T3 extends string,
   A extends any[],
   P
->(
-  requestType: T1,
-  successType: T2,
-  failureType: T3,
-  cb: (...args: A) => Promise<P>
-): CallableAsyncAction<T1, T2, T3, P, A> {
+>(requestType: T1, successType: T2, failureType: T3, cb: (...args: A) => Promise<P>) {
   const asyncAction = createAsyncAction(requestType, successType, failureType)<void, P, Error>();
 
   const callableAsyncAction: any = (...args: A) =>
@@ -46,5 +31,6 @@ export function asyncActionCreator<
   callableAsyncAction.success = asyncAction.success;
   callableAsyncAction.failure = asyncAction.failure;
 
-  return callableAsyncAction;
+  return callableAsyncAction as AsyncActionBuilder<T1, T2, T3, void, P, Error> &
+    ((...args: A) => Promise<void>);
 }
