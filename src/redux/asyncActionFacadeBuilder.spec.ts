@@ -59,7 +59,7 @@ describe("asyncFacadeBuilder", () => {
     expect(dispatchListener.mock.calls[1][0]).toBe(mockFailureReturnValue);
   });
 
-  it("on failure dispatches failure with error", async () => {
+  it("dispatches failure with error when asyncFunction throws an error", async () => {
     const error = new Error("Test error");
     const mockAsyncFunc = () => {
       throw error;
