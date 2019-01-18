@@ -1,5 +1,5 @@
 import * as store from "./store";
-import { asyncFacadeBuilder } from "./asyncFacadeBuilder";
+import { asyncActionFacadeBuilder } from "./asyncActionFacadeBuilder";
 jest.mock("./store");
 
 const dispatchListener = jest.spyOn(store, "dispatch");
@@ -18,14 +18,14 @@ afterEach(() => jest.resetAllMocks());
 describe("asyncFacadeBuilder", () => {
   it("calls dispatch twice", async () => {
     const mockAsyncFunc = jest.fn().mockResolvedValue({} as any);
-    await asyncFacadeBuilder(mockAction, mockAsyncFunc);
+    await asyncActionFacadeBuilder(mockAction, mockAsyncFunc);
 
     expect(dispatchListener.mock.calls.length).toBe(2);
   });
 
   it("dispatches request then success", async () => {
     const mockAsyncFunc = jest.fn().mockResolvedValue({} as any);
-    await asyncFacadeBuilder(mockAction, mockAsyncFunc);
+    await asyncActionFacadeBuilder(mockAction, mockAsyncFunc);
 
     expect(dispatchListener.mock.calls.length).toBe(2);
     expect(dispatchListener.mock.calls[0][0]).toBe(mockRequestReturnValue);
@@ -40,7 +40,7 @@ describe("asyncFacadeBuilder", () => {
       success: jest.fn().mockReturnValue(mockSuccessReturnValue)
     };
 
-    await asyncFacadeBuilder(customMockAction, mockAsyncFunc);
+    await asyncActionFacadeBuilder(customMockAction, mockAsyncFunc);
 
     expect(dispatchListener.mock.calls[1][0]).toBe(mockSuccessReturnValue);
     expect(customMockAction.success.mock.calls.length).toBe(1);
@@ -52,7 +52,7 @@ describe("asyncFacadeBuilder", () => {
       throw new Error("Test error");
     };
 
-    await asyncFacadeBuilder(mockAction, mockAsyncFunc);
+    await asyncActionFacadeBuilder(mockAction, mockAsyncFunc);
 
     expect(dispatchListener.mock.calls.length).toBe(2);
     expect(dispatchListener.mock.calls[0][0]).toBe(mockRequestReturnValue);
@@ -69,7 +69,7 @@ describe("asyncFacadeBuilder", () => {
       failure: jest.fn().mockReturnValue(mockFailureReturnValue)
     };
 
-    await asyncFacadeBuilder(customMockAction, mockAsyncFunc);
+    await asyncActionFacadeBuilder(customMockAction, mockAsyncFunc);
 
     expect(dispatchListener.mock.calls[1][0]).toBe(mockFailureReturnValue);
     expect(customMockAction.failure.mock.calls.length).toBe(1);
